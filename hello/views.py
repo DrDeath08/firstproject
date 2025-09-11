@@ -12,7 +12,7 @@ def about(request, name, age):
                         <p>Age: {age}</p>
                          """)
 def contact(request):
-    return HttpResponse("Contacts")
+    return HttpResponse("Contacts!")
 
 def anime(request):
     anime_list = Anime.objects.all()
