@@ -4,6 +4,9 @@ from .models import Anime
 
 
 def index(request):
+    host = request.META["HTTP_HOST"]
+    user_agent = request.META["HTTP_USER_AGENT"]
+    path = request.path
     return render(request, 'index.html')
 def about(request, name, age):
     return HttpResponse(f"""
