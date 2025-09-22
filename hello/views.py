@@ -8,7 +8,8 @@ def index(request):
     host = request.META["HTTP_HOST"]
     user_agent = request.META["HTTP_USER_AGENT"]
     path = request.path
-    data = {'host' : host, 'path' : path, 'user_agent' : user_agent}
+    me = Person("Dias","Kosmagul",24)
+    data = {'host' : host, 'path' : path, 'user_agent' : user_agent, 'me':me}
     return render(request, 'index.html', context = data)
 def about(request, name, age):
     return HttpResponse(f"""
@@ -34,8 +35,9 @@ def json(request):
     return JsonResponse(dias,safe=False,encoder=PersonEncoder)
 
 class Person:
-    def __init__(self, name, age):
+    def __init__(self, name, surname, age):
         self.name = name
+        self.surname = surname
         self.age = age
 class PersonEncoder(DjangoJSONEncoder):
     def default(self, obj):

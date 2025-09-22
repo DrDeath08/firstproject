@@ -6,9 +6,13 @@
     <title>Main</title>
 </head>
 <body>
-    <div><h1>Hello my site!</h1></div>
+    <div><h1>{{me.surname}} {{me.name}}</h1></div>
+    {%if me.age > 18 %}
+        <p>Aged</p>
+    {% endif %}
     <p>Host: {{host}}</p>
     <p>Path: {{path}}</p>
     <p>User-agent: {{user_agent}}</p>
+    <p>{% now "j F Y P" %}</p>
 </body>
 </html>
