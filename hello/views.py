@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from .models import Anime
 
 
@@ -19,5 +19,11 @@ def contact(request):
 
 def anime(request):
     anime_list = Anime.objects.all()
-    return render(request, 'anime.html', {'anime' : anime_list})
+    if anime_list == []:
+        return render(request, 'anime.html', {'anime' : anime_list})
+    else:
+        return HttpResponseNotFound("Not Found, Anime list is empty")
+
+def anime_get(request, id):
+    return HttpResponse(f"<h1>This is anime {id}</h1>")
 

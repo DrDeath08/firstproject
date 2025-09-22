@@ -6,7 +6,8 @@ about_patterns = [
     re_path('contact', views.contact)
 ]
 anime_patterns = [
-    path('',views.anime)
+    path('',views.anime),
+    path('<int:id>/', views.anime_get)
 ]
 
 urlpatterns = [
