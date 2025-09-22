@@ -7,7 +7,7 @@ def index(request):
     host = request.META["HTTP_HOST"]
     user_agent = request.META["HTTP_USER_AGENT"]
     path = request.path
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'host' : host, 'path' : path, 'user_agent' : user_agent})
 def about(request, name, age):
     return HttpResponse(f"""
                         <h2>About</h2>
