@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder  
 from .models import Anime
 
 
@@ -26,4 +27,18 @@ def anime(request):
 
 def anime_get(request, id):
     return HttpResponse(f"<h1>This is anime {id}</h1>")
+
+def json(request):
+    dias = Person("Dias", 24)
+    return JsonResponse(dias,safe=False,encoder=PersonEncoder)
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+class PersonEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Person):
+            return {"name": obj.name, "age":obj.age}
+        return super().default(obj)
 

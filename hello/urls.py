@@ -13,5 +13,6 @@ anime_patterns = [
 urlpatterns = [
     path('', views.index, name='home'),
     path('about/', include(about_patterns)),
-    path('anime/', include(anime_patterns))
+    path('anime/', include(anime_patterns)),
+    path('json/', views.json)
 ]
