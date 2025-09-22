@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
     <title>Main</title>
 </head>
 <body>
@@ -10,6 +12,7 @@
     {%if me.age > 18 %}
         <p>Aged</p>
     {% endif %}
+    <img src="{% static "images/myImage.png" %}" alt="My Foto" >
     <p>Host: {{host}}</p>
     <p>Path: {{path}}</p>
     <p>User-agent: {{user_agent}}</p>
