@@ -2,8 +2,8 @@ from django.urls import path, re_path, include
 from hello import views
 
 about_patterns = [
-    re_path(r'^about/contact', views.contact),
-    re_path(r'^about', views.about, kwargs={"name":"Dias","age":24})
+    path('', views.about, kwargs={"name":"Dias","age":24}),
+    re_path('contact', views.contact)
 ]
 
 urlpatterns = [
